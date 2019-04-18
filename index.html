@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/libs/bootstrap-4.1.3/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="/libs/fontawesome-5.8.1/css/all.css">
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="/libs/codemirror-5.45.0/lib/codemirror.css">
+    <link rel="stylesheet" href="/libs/codemirror-5.45.0/addon/scroll/simplescrollbars.css">
+    <script src="/libs/codemirror-5.45.0/lib/codemirror.js"></script>
+    <script src="/libs/codemirror-5.45.0/addon/scroll/simplescrollbars.js"></script>
+    <script src="/libs/codemirror-5.45.0/mode/xml/xml.js"></script>
+    <script src="/libs/codemirror-5.45.0/mode/javascript/javascript.js"></script>
+    <script src="/libs/codemirror-5.45.0/mode/css/css.js"></script>
+    <script src="/libs/codemirror-5.45.0/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="/libs/codemirror-5.45.0/addon/edit/closetag.js"></script>
+    <script src="/libs/codemirror-5.45.0/addon/edit/closebrackets.js"></script>
+    <script src="/libs/codemirror-5.45.0/addon/selection/active-line.js"></script>
+    <!-- JS Beautify -->
+    <script src="/libs/js-beautify-1.9.0/beautify-html.js"></script>
+    <script src="/libs/js-beautify-1.9.0/beautify-css.js"></script>
+    <!-- Perfect Scrollbar -->
+    <link rel="stylesheet" type="text/css" href="/libs/perfect-scrollbar-1.4.0/css/perfect-scrollbar.min.css">
+    <script src="/libs/perfect-scrollbar-1.4.0/perfect-scrollbar.min.js">
+    </script>
+    <!-- Color Picker js -->
+    <script src="/libs/jscolor/jscolor.js"></script>
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <title>Webes alapú Front-End készítő szoftver fejlesztése</title>
+</head>
+
+<body class="bg-secondary">
+    <div id="main" class="row no-gutters min-h-100">
+        <div id="sidebar" class="col float-left min-h-100">
+            <div class="row container px-0 mr-0">
+                <div id="menu" class="col-2">
+                    <ul class="nav nav-pills d-flex flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link text-nowrap" data-toggle="pill" href="#new">
+                                <span class="v-1024">Hozzáadás</span> <i class="far fa-plus-square menuIcon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-nowrap" data-toggle="pill" href="#edit">
+                                <span class="v-1024">Szerkesztés</span> <i class="far fa-edit menuIcon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-nowrap" data-toggle="pill" href="#style">
+                                <span class="v-1024">Stílus</span> <i class="fas fa-paint-brush menuIcon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-nowrap" data-toggle="pill" href="#save">
+                                <span class="v-1024">Mentés</span> <i class="far fa-save menuIcon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-10 pr-0 pl-1 ml-5 pl-2">
+                    <div class="tab-content">
+
+                        <div class="tab-pane active">
+                            <blockquote class="blockquote">
+                                <h2 class="mb-0 mt-5 pt-5">Webes alapú Front-End készítő szoftver fejlesztése</h2>
+                                <footer class="blockquote-footer text-right">Tóth Gergely | J289G1</footer>
+                            </blockquote>
+                        </div>
+
+                    <!-- ============
+                        HOZZÁADÁS 
+                    ============= -->
+                        <div id="new" class="tab-pane fade in">
+                            <h5
+                                class="font-weight-bold d-inline-block border-light p-3 border-right rounded-right border-bottom">
+                                Új elem hozzáadása</h5>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="search"><i class="fa fa-search"></i></span>
+                                </div>
+                                <input id="new-item-search" type="text" class="form-control" placeholder="Keresés..." aria-label="new-item-search" aria-describedby="search">
+                                <div class="input-group-prepend">
+                                    <button class="pipette btn btn-light border-secondary rounded-right" type="button" data-toggle="tooltip" data-placement="top" title="Kijelölés..."><i class="fas fa-eye-dropper"></i></button>
+                                </div>
+                            </div>
+
+
+                            <div id="new-item-insert" class="accordion-scroll">
+                                <!-- accordion add item list -->
+                            </div>
+                        </div>
+
+                    <!-- ============
+                        SZERKESZTÉS 
+                    ============= -->
+                        <div id="edit" class="tab-pane fade">
+                            <h5 class="font-weight-bold d-inline-block border-light p-3 border-right rounded-right border-bottom">Szerkesztés</h5>
+
+                            <div id="edit-item">
+                                <div class="card border-0 rounded-0">
+                                    <div class="card-header p-0" id="itemEditH">
+                                        <button class="btn btn-link collapsed w-100 h-100 bg-light" data-toggle="collapse" data-target="#item_edit" aria-expanded="false" aria-controls="item_edit">
+                                            Elem szerkesztése
+                                        </button>
+                                    </div>
+                                    <div id="item_edit" class="collapse" aria-labelledby="itemEditH" data-parent="#edit-item">
+                                        <div class="card-body bg-light-gray border-secondary border-top border-bottom">
+
+                                            <button class="btn btn-outline-secondary border-0 btn-sm mb-2 float-right" type="button" id="refresh" data-toggle="tooltip" data-placement="top" title="Mezők ürítése..."><i class="fas fa-sync"></i></button>
+
+                                            <label for="item2Edit" class="text-muted mt-3">Elem:</label>
+                                            <div class="input-group mb-2">
+                                                <input list="itemsFromWorksheet" id="item2Edit" name="item2Edit"
+                                                    class="form-control mb-3" />
+                                                <datalist id="itemsFromWorksheet">
+                                                    <!-- itemsFromWorksheet datalist -->
+                                                </datalist>
+                                                <div class="input-group-prepend">
+                                                    <button class="pipette btn btn-light border-secondary rounded-right btn-sm mb-3" type="button" data-toggle="tooltip" data-placement="top" title="Kijelölés..."><i class="fas fa-eye-dropper"></i></button>
+                                                </div>
+                                            </div>
+
+                                            <label class="text-muted">Attribútumok:</label>
+
+                                            <datalist id="attrN">
+                                                <!-- attrN datalist -->
+                                            </datalist>
+                                            <datalist id="attrV">
+                                                <!-- attrV datalist -->
+                                            </datalist>
+
+                                            <div class="input-group input-group-sm mb-1 attr">
+                                                <div class="input-group-prepend">
+                                                    <button class="btn btn-outline-secondary" type="button" id="delAttr" data-toggle="tooltip" data-placement="top" title="Törlés..."><i class="fas fa-minus fa-xs"></i></button>
+                                                </div>
+                                                <input type="text" class="attrN form-control" list="attrN"
+                                                    placeholder="név...">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">:</span>
+                                                </div>
+                                                <input type="text" class="attrV form-control" list="attrV" placeholder="érték...">
+                                            </div>
+                                            <button id="addAttr" class="btn btn-outline-secondary border-0 btn-sm mb-2 float-right" type="button" data-toggle="tooltip" data-placement="top" title="Hozzáadás..."><i class="fas fa-plus"></i></button>
+
+                                            <label class="text-muted mt-3">Események:</label>
+
+                                            <datalist id="eventN">
+                                                <!-- eventN datalist -->
+                                            </datalist>
+
+                                            <div class="input-group input-group-sm mb-1 event">
+                                                <div class="input-group-prepend">
+                                                    <button class="btn btn-outline-secondary" type="button" id="delEvnt" data-toggle="tooltip" data-placement="top" title="Törlés..."><i class="fas fa-minus fa-xs"></i></button>
+                                                </div>
+                                                <input type="text" class="eventN form-control" list="eventN"
+                                                    placeholder="event...">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">:</span>
+                                                </div>
+                                                <input type="text" class="eventV form-control " placeholder="script...">
+                                            </div>
+                                            <button id="addEvnt" class="btn btn-outline-secondary border-0 btn-sm mb-2 float-right" type="button" data-toggle="tooltip" data-placement="top" title="Hozzáadás..."><i class="fas fa-plus"></i></button>
+
+                                            <textarea name="itemContent" id="itemContent" class="form-control mt-5" placeholder="Tartalom..."></textarea>
+
+                                            <div class="input-group mb-2">
+                                                <input list="itemPossiblePlaces" id="itemPlace" name="itemPlace" placeholder="Hely..." class="form-control my-1" />
+                                                <datalist id="itemPossiblePlaces">
+                                                    <!-- itemPossiblePlaces datalist -->
+                                                </datalist>
+                                                <div class="input-group-prepend">
+                                                    <button class="pipette btn btn-light border-secondary rounded-right btn-sm my-1" type="button" data-toggle="tooltip" data-placement="top" title="Kijelölés..."><i class="fas fa-eye-dropper"></i></button>
+                                                </div>
+                                            </div>
+
+                                            <select id="inserTo" class="form-control custom-select custom-select-sm my-1">
+                                                <option selected value="" hidden>Pozicionálás...</option>
+                                                <option value="parent">Bele</option>
+                                                <option value="before">Elé</option>
+                                                <option value="after">Után</option>
+                                            </select>
+
+                                            <div class="row">
+                                                <button type="button" id="insertItemBtn" class="btn btn-outline-secondary my-1 mx-auto">Beszúrás</button>
+                                                <button type="button" id="modifyItemBtn" class="btn btn-outline-secondary my-1 mx-auto">Módosítás</button>
+                                                <button type="button" class="btn btn-outline-secondary my-1 mx-auto" data-toggle="modal" data-target="#confirmModal">Törlés</button>
+
+                                                <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="confirmModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title py-2" id="confirmModalLabel">Megerősítés</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Biztos törli ezt azt az elemet a munkalapról?
+                                                            </div>
+                                                            <div class="modal-footer py-2">
+                                                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Mégsem</button>
+                                                                <button type="button" class="btn btn-outline-danger btn-sm" id="deleteItemBtn" data-dismiss="modal">Mehet</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card border-0 rounded-0">
+                                    <div class="card-header p-0" id="codeH">
+                                        <button class="btn btn-link w-100 h-100 bg-light" data-toggle="collapse" data-target="#code-edit" aria-expanded="false" aria-controls="code-edit">
+                                            Kód
+                                        </button>
+                                    </div>
+                                    <div id="code-edit" class="collapse" aria-labelledby="codeH"
+                                        data-parent="#edit-item">
+                                        <div
+                                            class="card-body bg-light-gray border-secondary border-top p-0">
+                                            <!-- code editor -->
+                                        </div>
+                                        <h4 class="hover-text">Kattints ide a kód szerkesztéséhez!</h4>
+                                        <button type="button" id="codeSave" class="btn btn-outline-secondary my-1 float-right mr-2">Mentés</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- ============
+                        STÍLUS 
+                    ============= -->
+                        <div id="style" class="tab-pane fade">
+                            <h5
+                                class="font-weight-bold d-inline-block border-light p-3 border-right rounded-right border-bottom">
+                                Stílus</h5>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="search"><i class="fa fa-search"></i></span>
+                                </div>
+                                <input id="style-search" type="text" class="form-control" placeholder="Keresés..."
+                                    aria-label="style-search" aria-describedby="search">
+                                <div class="input-group-prepend">
+                                    <button
+                                        class="pipette btn btn-light border-secondary rounded-right"
+                                        type="button" data-toggle="tooltip" data-placement="top"
+                                        title="Kijelölés..."><i class="fas fa-eye-dropper"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="style-manager" class="accordion-scroll">
+                                <!-- style manager accordion -->
+                            </div>
+
+                            <datalist id="propN">
+                                <!-- propN datalist -->
+                            </datalist>
+                            <datalist id="propV">
+                                <!-- propV datalist -->
+                            </datalist>
+                        </div>
+
+                    <!-- ============
+                        MENTÉS 
+                    ============= -->
+                        <div id="save" class="tab-pane fade">
+                            <h5
+                                class="font-weight-bold d-inline-block border-light p-3 border-right rounded-right border-bottom">
+                                Mentés</h5>
+
+                            <div class="button-container">
+                                <button type="button" class="btn btn-outline-light saveBTN" title="index.html"><i class="far fa-file-code fa-lg"></i><br>index.html</button>
+                                <button type="button" class="btn btn-outline-light saveBTN" title="style.css"><i class="far fa-file-code fa-lg"></i><br>style.css</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- ============
+        MUNKATERÜLET 
+    ============= -->
+        <div id="worksheet-container" class="col p-0 float-right p-1  min-h-100">
+            <div id="control-menu" class="btn-group dropleft">
+                <button class="btn btn-outline-light border-0 rounded btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmClear"><i class="far fa-file"></i> Új munkalap</a>
+                    <div class="dropdown-divider"></div>
+                    <a id="undo" class="dropdown-item" href="#"><i class="fas fa-undo-alt"></i> Vissza <span class="text-muted">(ctrl+z)</span></a>
+                    <a id="redo" class="dropdown-item" href="#"><i class="fas fa-redo-alt"></i> Újra <span class="text-muted">(ctrl+y)</span></a>
+                </div>
+
+                <div class="modal fade" id="confirmClear" tabindex="-1" role="dialog"
+                    aria-labelledby="confirmClearLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title py-2" id="confirmClearLabel">
+                                    Megerősítés</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Biztos törli a munkalap összes elemét?
+                            </div>
+                            <div class="modal-footer py-2">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Mégsem</button>
+                                <button type="button" class="btn btn-outline-danger btn-sm" id="deleteAllBtn" data-dismiss="modal">Mehet</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="size" class="px-2">size</div>
+            <iframe src="" id="worksheet" class="border border-dark bg-light rounded w-100"></iframe>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/libs/mejsx/mejsx.js"></script>
+    <script src="/libs/jquery-3.3.1/jquery.min.js"></script>
+    <script src="/libs/split.js-1.3.5/split.min.js"></script>
+    <script src="/libs/popper.js-1.14.3/umd/popper.min.js"></script>
+    <script src="/libs/bootstrap-4.1.3/js/bootstrap.min.js"></script>
+    
+    <!-- Own -->
+    <script src="/js/script.js"></script>
+    
+</body>
+
+</html>
